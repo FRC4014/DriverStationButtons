@@ -27,13 +27,13 @@ void loop() {
     if (digitalRead(inputButtons[i]) == HIGH && buttonState[i] == false)
     {
       Serial.print(i);
-      Serial.print(1);
+      Serial.println(1);
       buttonState[i] = true; //change to on
     }
     else if (digitalRead(inputButtons[i]) == LOW && buttonState[i] == true)
     {
       Serial.print(i);
-      Serial.print(0);
+      Serial.println(0);
       buttonState[i] = false; //change to off
     }
   }
