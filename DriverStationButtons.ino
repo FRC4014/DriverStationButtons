@@ -25,8 +25,16 @@ void setup() {
 void loop() {
   for (int i=0; i<sizeof(inputButtons); i++) {
     if (digitalRead(inputButtons[i]) == HIGH && buttonState[i] == false)
-      Serial.println(i + "1"); //change to on
+    {
+      Serial.print(i);
+      Serial.print(1);
+      buttonState[i] = true; //change to on
+    }
     else if (digitalRead(inputButtons[i]) == LOW && buttonState[i] == true)
-      Serial.println(1 + "0"); //change to off
+    {
+      Serial.print(i);
+      Serial.print(0);
+      buttonState[i] = false; //change to off
+    }
   }
 }
