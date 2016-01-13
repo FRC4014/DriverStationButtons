@@ -6,7 +6,7 @@ A simple arduino program to relay button presses via the serial
 port to the robot program.
 */
 
-byte inputButtons = {2, 3, 4, 5}; //the port for each of the 
+byte inputButtons[] = {2, 3, 4, 5}; //the port for each of the 
 //buttons in use.  Will be refferred to by their position in this
 //array.
 boolean buttonState[] = {false, false, false, false}; 
@@ -20,4 +20,13 @@ void setup() {
     pinMode(inputButtons[i], INPUT);
 
   Serial.println("ready");
+}
+
+void loop() {
+  for (int i=0; i<sizeof(inputButtons); i++) {
+    if (digitalRead(inputButtons[i]) == HIGH && buttonState[i] == false)
+      Serial.println(i + "1"); //change to on
+    else if (digitalRead(inputButtons[i]) == LOW && buttonState[i] == true)
+      Serial.println(1 + "0"); //change to off
+  }
 }
